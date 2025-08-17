@@ -115,7 +115,7 @@ function addScrollToTop() {
     
     // Add WhatsApp contact button above scroll-to-top
     const whatsappBtn = document.createElement('a');
-    whatsappBtn.href = 'https://wa.me/919876543210?text=Hi! I\'m interested in OS-BOOKS business management software. Can you help me?';
+    whatsappBtn.href = 'https://wa.me/919907023957?text=Hi! I\'m interested in OS-BOOKS business management software. Can you help me?';
     whatsappBtn.className = 'whatsapp-contact';
     whatsappBtn.target = '_blank';
     whatsappBtn.rel = 'noopener noreferrer';
@@ -610,192 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(loader);
 });
 
-// Hero Carousel Functionality
-let currentSlide = 1;
-const totalSlides = 3;
-let autoSlideInterval;
 
-function initCarousel() {
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const prevBtn = document.querySelector('.carousel-nav-btn.prev');
-    const nextBtn = document.querySelector('.carousel-nav-btn.next');
-
-    if (!slides.length) return; // Exit if no slides found
-
-    function goToSlide(slideNumber) {
-        // Remove active class from current slide and dot
-        const currentActiveSlide = document.querySelector('.hero-slide.active');
-        const currentActiveDot = document.querySelector('.carousel-dot.active');
-        
-        if (currentActiveSlide) {
-            currentActiveSlide.classList.remove('active');
-            currentActiveSlide.classList.add('prev');
-        }
-        
-        if (currentActiveDot) currentActiveDot.classList.remove('active');
-
-        // Add active class to new slide and dot
-        if (slides[slideNumber - 1]) {
-            slides[slideNumber - 1].classList.remove('prev', 'next');
-            slides[slideNumber - 1].classList.add('active');
-        }
-        
-        if (dots[slideNumber - 1]) dots[slideNumber - 1].classList.add('active');
-
-        currentSlide = slideNumber;
-    }
-
-    function nextSlide() {
-        const nextSlideNum = currentSlide === totalSlides ? 1 : currentSlide + 1;
-        
-        // For sequential effect, always bring next slide from right
-        const currentSlideEl = document.querySelector('.hero-slide.active');
-        const nextSlideEl = slides[nextSlideNum - 1];
-        
-        if (currentSlideEl && nextSlideEl) {
-            // Move current slide to left
-            currentSlideEl.classList.remove('active');
-            currentSlideEl.classList.add('prev');
-            
-            // Move next slide to center (always from right)
-            nextSlideEl.classList.remove('prev', 'next');
-            nextSlideEl.classList.add('active');
-            
-            // Update dots
-            document.querySelector('.carousel-dot.active').classList.remove('active');
-            dots[nextSlideNum - 1].classList.add('active');
-            
-            currentSlide = nextSlideNum;
-        }
-    }
-
-    function prevSlide() {
-        const prevSlideNum = currentSlide === 1 ? totalSlides : currentSlide - 1;
-        
-        // For circular effect, slide current to right and bring prev from left
-        const currentSlideEl = document.querySelector('.hero-slide.active');
-        const prevSlideEl = slides[prevSlideNum - 1];
-        
-        if (currentSlideEl && prevSlideEl) {
-            currentSlideEl.classList.remove('active');
-            currentSlideEl.classList.add('next');
-            
-            prevSlideEl.classList.remove('prev', 'next');
-            prevSlideEl.classList.add('active');
-            
-            // Update dots
-            document.querySelector('.carousel-dot.active').classList.remove('active');
-            dots[prevSlideNum - 1].classList.add('active');
-            
-            currentSlide = prevSlideNum;
-        }
-    }
-
-    // Event listeners for navigation buttons
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-    // Event listeners for dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goToSlide(index + 1);
-        });
-    });
-
-    // Auto-slide functionality
-    function startAutoSlide() {
-        // Slower auto-slide on mobile for better user experience
-        // const isMobile = window.innerWidth <= 1168;
-        // const slideInterval = isMobile ? 8000 : 5000; // 8 seconds on mobile, 5 on desktop
-        // autoSlideInterval = setInterval(nextSlide, slideInterval);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    // Start auto-slide
-    startAutoSlide();
-
-    // Pause auto-slide on hover
-    const carousel = document.querySelector('.hero-carousel');
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopAutoSlide);
-        carousel.addEventListener('mouseleave', startAutoSlide);
-    }
-
-    // Touch/swipe support for mobile
-    let startX = 0;
-    let endX = 0;
-    let startY = 0;
-    let isSwiping = false;
-
-    carousel.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        isSwiping = false;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!isSwiping) {
-            const currentY = e.touches[0].clientY;
-            const currentX = e.touches[0].clientX;
-            const diffY = Math.abs(currentY - startY);
-            const diffX = Math.abs(currentX - startX);
-            
-            // Only start swiping if horizontal movement is greater than vertical
-            if (diffX > diffY && diffX > 10) {
-                isSwiping = true;
-            }
-        }
-    });
-
-    carousel.addEventListener('touchend', (e) => {
-        if (isSwiping) {
-            endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > 80) { // Increased minimum swipe distance for mobile
-                if (diff > 0) {
-                    nextSlide(); // Swipe left
-                } else {
-                    prevSlide(); // Swipe right
-                }
-            }
-        }
-        isSwiping = false;
-    });
-}
-
-// Initialize carousel when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Ensure proper initial state before starting carousel
-    setTimeout(() => {
-        initCarousel();
-        // Force first slide to be active and others hidden
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        
-        slides.forEach((slide, index) => {
-            if (index === 0) {
-                slide.classList.add('active');
-                slide.classList.remove('prev', 'next');
-            } else {
-                slide.classList.remove('active');
-                slide.classList.add('prev'); // Add prev class to hide them
-            }
-        });
-        
-        dots.forEach((dot, index) => {
-            if (index === 0) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    }, 100);
-});
 
 // Advanced Mobile Number Collection System
 function initializeAdvancedMobilePopup() {
@@ -856,7 +671,7 @@ function showAdvancedMobilePopup() {
             <div class="popup-content">
                 <div class="popup-header">
                     <h3>📱 Get Your Free Demo!</h3>
-                    <p>Enter your mobile number for instant access</p>
+                    <p>Enter your mobile number for Get Video Demo</p>
                 </div>
                 
                 <div class="popup-body">
