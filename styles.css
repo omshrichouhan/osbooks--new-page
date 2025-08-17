@@ -1656,12 +1656,19 @@ p {
     background: #f8fafc;
 }
 
+.pricing .container {
+    width: 100%;
+    max-width: 100%;
+}
+
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 3rem;
+    margin: 3rem auto 0 auto;
     width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 
 .pricing-card {
@@ -1758,12 +1765,14 @@ p {
 }
 
 .pricing-note {
-    margin-top: 3rem;
+    margin: 3rem auto 0 auto;
     text-align: center;
     background: white;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 100%;
 }
 
 .pricing-note p {
@@ -2237,12 +2246,86 @@ p {
         max-width: 95% !important;
         padding: 0 15px !important;
         margin: 0 auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Fix pricing section mobile layout */
+    .pricing .container {
+        padding: 0 10px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .pricing-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 2rem auto 0 auto !important;
+        justify-items: center !important;
+        align-items: center !important;
+    }
+    
+    .pricing-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .pricing-card .pricing-header h3 {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .pricing-card .price .amount {
+        font-size: 2.5rem !important;
+    }
+    
+    .pricing-card .price .currency {
+        font-size: 1.2rem !important;
+    }
+    
+    .pricing-card .price .period {
+        font-size: 0.9rem !important;
+    }
+    
+    .pricing-note {
+        margin: 2rem auto 0 auto !important;
+        padding: 1.5rem 1rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .pricing-note p {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .terms {
+        max-width: 100% !important;
+        padding: 0 10px !important;
     }
     
     /* Fix mobile spacing and layout */
     .section-header {
         padding: 0 10px !important;
         margin-bottom: 2rem !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .pricing .section-header {
+        padding: 0 5px !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+        width: 100% !important;
     }
     
     .section-title {
@@ -2368,11 +2451,33 @@ p {
     .pricing-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        justify-items: center;
+        align-items: center;
+        place-items: center;
     }
     
     .pricing-card {
         padding: 1.5rem;
         min-height: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .pricing .container {
+        padding: 0 10px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .pricing-grid {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
     
     .benefits-grid {
